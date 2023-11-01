@@ -33,8 +33,8 @@ export default function App() {
   }
 
   function updateWatchedMovie(updatedMovie) {
-    setWatched((prevWatched) =>
-      prevWatched.map((movie) =>
+    setWatched((watched) =>
+      watched.map((movie) =>
         movie.imdbID === updatedMovie.imdbID ? updatedMovie : movie
       )
     );
