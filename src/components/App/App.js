@@ -32,6 +32,14 @@ export default function App() {
     setWatched((watched) => [...watched, movie]);
   }
 
+  function updateWatchedMovie(updatedMovie) {
+    setWatched((watched) =>
+      watched.map((movie) =>
+        movie.imdbID === updatedMovie.imdbID ? updatedMovie : movie
+      )
+    );
+  }
+
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
@@ -58,6 +66,7 @@ export default function App() {
               onCloseMovieDetails={handleCloseMovieDetails}
               onAddWatched={handleAddWatched}
               watched={watched}
+              onUpdateWatchedMovie={updateWatchedMovie}
             />
           ) : (
             <>
@@ -65,6 +74,7 @@ export default function App() {
               <WatchedMovieList
                 watched={watched}
                 onDeleteWatched={handleDeleteWatched}
+                onSelectMovie={handleSelectMovie}
               />
             </>
           )}

@@ -1,6 +1,6 @@
 import WatchedMovie from "../WatchedMovie/WatchedMovie";
 
-export default function WatchedMovieList({ watched, onDeleteWatched }) {
+export default function WatchedMovieList({ watched, onDeleteWatched, onSelectMovie }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
@@ -8,6 +8,7 @@ export default function WatchedMovieList({ watched, onDeleteWatched }) {
           movie={movie}
           key={movie.imdbID}
           onDeleteWatched={onDeleteWatched}
+          onSelectMovie={onSelectMovie}
         />
       ))}
     </ul>

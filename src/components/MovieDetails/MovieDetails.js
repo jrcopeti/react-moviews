@@ -7,6 +7,7 @@ export default function MovieDetails({
   selectedId,
   onCloseMovieDetails,
   onAddWatched,
+  onUpdateWatchedMovie,
   watched,
 }) {
   const [movie, setMovie] = useState({});
@@ -18,9 +19,12 @@ export default function MovieDetails({
 
   // const isDisabled = isWatched || userRating === "";
 
-  const watchedUserRating = watched.find(
-    (movie) => movie.imdbID === selectedId
-  )?.userRating;
+  // const watchedUserRating =
+  //   watched.find((movie) => movie.imdbID === selectedId)?.userRating || "";
+
+  // useEffect(() => {
+  //   setUserRating(watchedUserRating);
+  // }, [watchedUserRating]);
 
   const {
     Title: title,
@@ -52,22 +56,16 @@ export default function MovieDetails({
     onCloseMovieDetails();
   }
 
-  useKey('Escape', onCloseMovieDetails)
+  function handleUpdateRating() {
+    const updatedMovie = {
+      ...watched.find(movie => movie.imdbID === selectedId),
+      userRating
+    };
+    onUpdateWatchedMovie(updatedMovie);
+    onCloseMovieDetails();
+  }
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (e.code === "Escape") {
-          onCloseMovieDetails();
-        }
-      }
-      document.addEventListener("keydown", callback);
-      return function () {
-        document.removeEventListener("keydown", callback);
-      };
-    },
-    [onCloseMovieDetails]
-  );
+  useKey("Escape", onCloseMovieDetails);
 
   useEffect(
     function () {
@@ -123,22 +121,23 @@ export default function MovieDetails({
 
           <section>
             <div className="rating">
-              {!isWatched ? (
-                <>
-                  <StarRating
-                    maxRating={10}
-                    size={24}
-                    onSetRating={setUserRating}
-                  />
-                  {userRating > 0 && (
-                    <button className="btn-add" onClick={handleAddMovie}>
-                      + Add to list
-                    </button>
-                  )}
-                </>
-              ) : (
-                <p>You rated this movie {watchedUserRating}</p>
-              )}
+              <>
+                <StarRating
+                  maxRating={10}
+                  size={24}
+                  onSetRating={setUserRating}
+                />
+                {!isWatched && userRating > 0 && (
+                  <button className="btn-add" onClick={handleAddMovie}>
+                    + Add to list
+                  </button>
+                )}
+                {isWatched && (
+                  <button className="btn-add" onClick={handleUpdateRating}>
+                    Update rating
+                  </button>
+                )}
+              </>
             </div>
             <p>
               <em>{plot}</em>
