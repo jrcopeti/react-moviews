@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StarRating from "../StarRating/StarRating";
 import Loader from "../Loader/Loader";
+import { useKey } from "../../hooks/useKey";
 
 export default function MovieDetails({
   selectedId,
@@ -15,7 +16,7 @@ export default function MovieDetails({
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   console.log(isWatched);
 
-  const isDisabled = isWatched || userRating === "";
+  // const isDisabled = isWatched || userRating === "";
 
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
@@ -50,6 +51,8 @@ export default function MovieDetails({
     onAddWatched(newWatchedMovie);
     onCloseMovieDetails();
   }
+
+  useKey('Escape', onCloseMovieDetails)
 
   useEffect(
     function () {
