@@ -88,7 +88,7 @@ export default function MovieDetails({
       document.title = `${title}`;
 
       return function () {
-        document.title = "UsePopcorn";
+        document.title = "Moviews";
       };
     },
     [title]
