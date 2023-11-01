@@ -1,6 +1,6 @@
-export default function WatchedMovie({ movie, onDeleteWatched }) {
+export default function WatchedMovie({ movie, onDeleteWatched, onSelectMovie }) {
   return (
-    <li>
+    <li onClick={() => onSelectMovie(movie.imdbID)}>
       <img src={movie.poster} alt={`${movie.Title} poster`} />
       <h3>{movie.title}</h3>
       <div>
