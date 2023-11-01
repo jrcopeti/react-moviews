@@ -12,7 +12,7 @@ export default function MovieDetails({
 }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [userRating, setUserRating] = useState("");
+  const [userRating, setUserRating] = useState(0);
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   console.log(isWatched);
@@ -127,7 +127,7 @@ export default function MovieDetails({
                   size={24}
                   onSetRating={setUserRating}
                 />
-                {!isWatched && userRating > 0 && (
+                {!isWatched && userRating >= 0 && (
                   <button className="btn-add" onClick={handleAddMovie}>
                     + Add to list
                   </button>
