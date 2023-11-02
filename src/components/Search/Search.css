@@ -5,6 +5,7 @@
   font-size: 1.8rem;
   border-radius: 0.7rem;
   width: 40rem;
+  font-family: "Audiowide", sans-serif;
 
   /* background-color: var(--color-background-900); */
   background-color: var(--color-primary-light);
@@ -29,4 +30,26 @@
 ::placeholder {
   color: var (--color-background-100);
   font-family: "Audiowide", sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  .search {
+    width: 30vh;
+    height: 5vh;
+    font-size: 20px;
+
+  }
+  ::placeholder {
+    font-size: 20px;
+
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+  .search {
+    width: 35vh;
+  }
+
+
 }
