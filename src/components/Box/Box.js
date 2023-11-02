@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Box.css";
 
 export default function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
