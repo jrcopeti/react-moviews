@@ -1,0 +1,17 @@
+.box {
+  width: 42rem;
+  max-width: 42rem;
+  background-color: var(--color-background-500);
+  border-radius: 0.9rem;
+  overflow: scroll;
+  position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+  .box {
+    height: calc(50vh - 1.2rem);
+    width: auto;
+    max-width: none;
+    overflow: auto;
+  }
+}

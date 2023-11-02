@@ -1,8 +1,11 @@
+import "./Logo.css";
+import clapperboard from "./clapperboard.png";
+
 export default function Logo() {
   return (
     <div className="logo">
-      <span role="img">🎬</span>
-      <h1>Moviews</h1>
+     <img src={clapperboard} alt="clapperboard" />
+      <h1>MOVIEWS</h1>
     </div>
-  )
+  );
 }
