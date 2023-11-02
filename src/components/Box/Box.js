@@ -6,7 +6,7 @@ export default function Box({ children }) {
   return (
     <div className="box">
       <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
-        {isOpen ? "Hide" : "Show"}
+        {isOpen ? "-" : "+"}
       </button>
       {isOpen && children}
     </div>
