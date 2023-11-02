@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { useKey } from "../../hooks/useKey";
+import "./Search.css";
 
 export default function Search({ query, setQuery }) {
   const inputEl = useRef(null);
-  console.log(inputEl);
+
 
   useKey("Enter", function () {
     console.log(inputEl.current);

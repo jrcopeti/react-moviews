@@ -12,6 +12,7 @@ import MovieList from "../MovieList/MovieList";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import WatchedSummary from "../WatchedSummary/WatchedSummary";
 import WatchedMovieList from "../WatchedMovieList/WatchedMovieList";
+import "./App.css";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -48,7 +49,7 @@ export default function App() {
     <>
       <Navbar>
         <Search query={query} setQuery={setQuery} />
-        <NumResults movies={movies} />
+        {movies.length > 0 ? <NumResults movies={movies}/> : <p className="num-results">Make your movie list</p>}
       </Navbar>
 
       <Main>
