@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import StarRating from "../StarRating/StarRating";
 import Loader from "../Loader/Loader";
 import { useKey } from "../../hooks/useKey";
+import "./MovieDetails.css";
 
 export default function MovieDetails({
   selectedId,
@@ -17,14 +18,6 @@ export default function MovieDetails({
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   console.log(isWatched);
 
-  // const isDisabled = isWatched || userRating === "";
-
-  // const watchedUserRating =
-  //   watched.find((movie) => movie.imdbID === selectedId)?.userRating || "";
-
-  // useEffect(() => {
-  //   setUserRating(watchedUserRating);
-  // }, [watchedUserRating]);
 
   const {
     Title: title,
@@ -95,6 +88,7 @@ export default function MovieDetails({
     [title]
   );
 
+
   return (
     <div className="details">
       {isLoading ? (
@@ -105,18 +99,17 @@ export default function MovieDetails({
             <button className="btn-back" onClick={onCloseMovieDetails}>
               &larr;
             </button>
-            <img src={poster} alt={`Poster of ${movie}`} />
-            <div className={"details-overview"}>
+            <img className="poster" src={poster} alt={`Poster of ${movie}`} />
+            <div className="details-overview">
               <h2>{title}</h2>
               <p>
                 {released} &bull; {runtime}
               </p>
               <p>{genre}</p>
               <p>
-                <span>⭐️</span>IMDb rating
+                <span>⭐️</span>{imdbRating} IMDB Rating
               </p>
             </div>
-            {selectedId}
           </header>
 
           <section>
@@ -126,6 +119,8 @@ export default function MovieDetails({
                   maxRating={10}
                   size={24}
                   onSetRating={setUserRating}
+                  fontFamily = "Alata"
+                  className="star-rating"
                 />
                 {!isWatched && userRating >= 0 && (
                   <button className="btn-add" onClick={handleAddMovie}>
