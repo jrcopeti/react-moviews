@@ -7,6 +7,7 @@
   padding: 0 3.2rem;
   background-color: var(--color-primary);
   border-radius: 0.9rem;
+  gap: 1.6rem;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -15,8 +16,15 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 9rem;
+    height: 11rem;
+    gap: 0px;
+
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .navbar {
 
+    height: 9rem;
+  }
+}

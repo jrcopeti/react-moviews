@@ -4,6 +4,21 @@
 }
 
 
+@media only screen and (max-width: 1053px) {
+  .num-results {
+   font-size: 22px;
+   margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .num-results {
+   font-size: 22px;
+   margin-bottom: 10px;
+  }
+}
+
+
 @media only screen and (max-width: 768px) {
   .num-results {
    font-size: 17px;
