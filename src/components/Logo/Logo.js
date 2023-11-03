@@ -1,10 +1,10 @@
 import "./Logo.css";
-import clapperboard from "./clapperboard.png";
+import theater from "./theater.png";
 
 export default function Logo() {
   return (
     <div className="logo">
-     <img src={clapperboard} alt="clapperboard" />
+     <img src={theater} alt="theater" />
       <h1>MOVIEWS</h1>
     </div>
   );

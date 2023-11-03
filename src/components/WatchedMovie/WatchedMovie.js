@@ -1,19 +1,28 @@
-export default function WatchedMovie({ movie, onDeleteWatched, onSelectMovie }) {
+import star from "./star.png";
+import clock from "./wall-clock.png";
+import "./WatchedMovie.css";
+export default function WatchedMovie({
+  movie,
+  onDeleteWatched,
+  onSelectMovie,
+}) {
   return (
-    <li onClick={() => onSelectMovie(movie.imdbID)}>
-      <img src={movie.poster} alt={`${movie.Title} poster`} />
+    <li>
+      <img
+        className="poster"
+        src={movie.poster}
+        alt={`${movie.Title} poster`}
+        onClick={() => onSelectMovie(movie.imdbID)}
+      />
       <h3>{movie.title}</h3>
       <div>
         <p>
-          <span>⭐️</span>
-          <span>{movie.imdbRating}</span>
-        </p>
-        <p>
-          <span>🌟</span>
+          <img className="icon-star" src={star} alt="star" />
           <span>{movie.userRating}</span>
         </p>
         <p>
-          <span>⏳</span>
+          <img className="icon" src={clock} alt="clock" />
+
           <span>{movie.runtime} min</span>
         </p>
         <button
