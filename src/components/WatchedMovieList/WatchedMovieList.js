@@ -1,4 +1,5 @@
 import WatchedMovie from "../WatchedMovie/WatchedMovie";
+import "./WatchedMovieList.css";
 
 export default function WatchedMovieList({ watched, onDeleteWatched, onSelectMovie }) {
   return (

@@ -1,5 +1,6 @@
 import Movie from "../Movie/Movie";
 import "./MovieList.css";
+
 export default function MovieList({ movies, onSelectMovie }) {
   return (
     <ul className="list list-movies">
