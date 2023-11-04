@@ -120,9 +120,9 @@ export default function MovieDetails({
     } else if (screenSize > 480 && screenSize <= 850) {
       return 28;
     } else if (screenSize > 850 && screenSize <= 1285) {
-      return 38;
-    } else if (screenSize > 1285) {
       return 40;
+    } else if (screenSize > 1285) {
+      return 45;
     }
   }
   console.log(starSize());
