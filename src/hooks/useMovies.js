@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export function useMovies(query, callback) {
   const [movies, setMovies] = useState([]);
- const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(

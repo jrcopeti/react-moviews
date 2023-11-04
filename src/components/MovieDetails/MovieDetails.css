@@ -129,7 +129,6 @@
     gap: 1.2rem;
   }
 
-
   .btn-back {
     height: 2.2rem;
     font-size: 1.4rem;
@@ -140,7 +139,6 @@
   }
 
   .star-rating {
-   font-size: 24px;
-
+    font-size: 24px;
   }
 }
