@@ -72,10 +72,14 @@
     width: 20px;
     height: 20px
   }
+
+  .list p{
+    gap: 5px;
+  }
   .list div {
     display: flex;
     align-items: center;
-    gap: 2.0rem;
+    gap: 10px;
   }
 
 }

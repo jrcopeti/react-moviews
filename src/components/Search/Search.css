@@ -1,20 +1,14 @@
 .search {
-  /* align-self: center; */
+
   padding: 1.1rem 1.6rem;
   border: 2px solid var(--color-primary);
   font-size: 1.8rem;
   border-radius: 0.7rem;
   width: 40vw;
   font-family: "Audiowide", sans-serif;
-
-  /* background-color: var(--color-background-900); */
   background-color: var(--color-primary-light);
 }
 
-/* input:focus {
-  border-color: var(--color-focus);
-  outline: none ;
-} */
 .search:focus {
   outline: none;
   border-color: var(--color-focus);
@@ -30,6 +24,13 @@
 ::placeholder {
   color: var (--color-background-100);
   font-family: "Audiowide", sans-serif;
+}
+
+@media only screen and (max-width: 850px) {
+  .search {
+    width: 30vh;
+    height: 5vh;
+  }
 }
 
 @media only screen and (max-width: 768px) {

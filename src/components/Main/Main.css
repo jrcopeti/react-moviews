@@ -6,12 +6,12 @@
   justify-content: center;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
   .main {
+    margin-top: 0px;
     height: auto;
-    min-height: 100vh;
     flex-direction: column;
-    gap: 2.4rem;
+    gap: 0px;
     justify-content: space-around;
     align-items: stretch;
   }
