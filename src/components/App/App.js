@@ -49,7 +49,11 @@ export default function App() {
     <>
       <Navbar>
         <Search query={query} setQuery={setQuery} />
-        {movies.length > 0 ? <NumResults movies={movies}/> : <p className="num-results">Make your movie list</p>}
+        {movies.length > 0 ? (
+          <NumResults movies={movies} />
+        ) : (
+          <p className="num-results">Make your movie list</p>
+        )}
       </Navbar>
 
       <Main>
