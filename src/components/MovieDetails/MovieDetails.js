@@ -112,19 +112,20 @@ export default function MovieDetails({
     };
   }, []);
 
-  function starSize(screenSize) {
+  function starSize() {
     if (screenSize <= 390) {
       return 20;
-    } else if (screenSize <= 480) {
+    } else if (screenSize > 390 && screenSize <= 480) {
       return 24;
-    } else if (screenSize <= 850) {
+    } else if (screenSize > 480 && screenSize <= 850) {
+      return 28;
+    } else if (screenSize > 850 && screenSize <= 1285) {
       return 38;
-    } else if (screenSize <= 1285) {
+    } else if (screenSize > 1285) {
       return 40;
-    } else {
-      return 45;
     }
   }
+  console.log(starSize());
 
   return (
     <div className="details">
