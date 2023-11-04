@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import StarRating from "../StarRating/StarRating";
 import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useKey } from "../../hooks/useKey";
 import "./MovieDetails.css";
 
@@ -14,10 +15,10 @@ export default function MovieDetails({
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
+  const [error, setError] = useState("");
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   console.log(isWatched);
-
 
   const {
     Title: title,
@@ -34,6 +35,7 @@ export default function MovieDetails({
     Language: language,
     Country: country,
   } = movie;
+  console.log(movie);
 
   function handleAddMovie() {
     const newWatchedMovie = {
@@ -51,8 +53,8 @@ export default function MovieDetails({
 
   function handleUpdateRating() {
     const updatedMovie = {
-      ...watched.find(movie => movie.imdbID === selectedId),
-      userRating
+      ...watched.find((movie) => movie.imdbID === selectedId),
+      userRating,
     };
     onUpdateWatchedMovie(updatedMovie);
     onCloseMovieDetails();
@@ -63,13 +65,22 @@ export default function MovieDetails({
   useEffect(
     function () {
       async function getMovieDetails() {
-        setIsLoading(true);
-        const res = await fetch(
-          `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${selectedId}`
-        );
-        const data = await res.json();
-        setMovie(data);
-        setIsLoading(false);
+        try {
+          setIsLoading(true);
+          const res = await fetch(
+            `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&i=${selectedId}`
+          );
+          if (!res.ok) {
+            throw new Error("Something went wrong");
+          }
+          const data = await res.json();
+          setMovie(data);
+        } catch (err) {
+          console.error(err.message);
+          setError("Unable to get movie details");
+        } finally {
+          setIsLoading(false);
+        }
       }
       getMovieDetails();
     },
@@ -88,18 +99,20 @@ export default function MovieDetails({
     [title]
   );
 
-
   return (
     <div className="details">
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {isLoading && <Loader />}
+      {!isLoading && !error && (
         <>
           <header>
             <button className="btn-back" onClick={onCloseMovieDetails}>
               &larr;
             </button>
-            <img className="poster" src={poster} alt={`Poster of ${movie}`} />
+            {movie.Poster === "N/A" ? (
+              ""
+            ) : (
+              <img className="poster" src={poster} alt={`Poster of ${movie}`} />
+            )}
             <div className="details-overview">
               <h2>{title}</h2>
               <p>
@@ -107,7 +120,8 @@ export default function MovieDetails({
               </p>
               <p>{genre}</p>
               <p>
-                <span>⭐️</span>{imdbRating} IMDB Rating
+                <span>⭐️</span>
+                {imdbRating} IMDB Rating
               </p>
             </div>
           </header>
@@ -119,7 +133,7 @@ export default function MovieDetails({
                   maxRating={10}
                   size={24}
                   onSetRating={setUserRating}
-                  fontFamily = "Alata"
+                  fontFamily="Alata"
                   className="star-rating"
                 />
                 {!isWatched && userRating >= 0 && (
@@ -145,6 +159,7 @@ export default function MovieDetails({
           </section>
         </>
       )}
+      {error && <ErrorMessage message={error} />}
     </div>
   );
 }
