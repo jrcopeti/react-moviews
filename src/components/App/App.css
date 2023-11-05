@@ -30,7 +30,8 @@ body {
   padding: 2.4rem;
 }
 
-/* .slogan {
-  font-family: "Alata", sans-serif;
-  font-size: 25px;
-} */
+@media only screen and (max-width: 768px) {
+  body {
+    padding: 1.2rem 2.4rem 1.2rem 2.4rem;
+  }
+}
