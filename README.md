@@ -19,3 +19,4 @@ A responsive web application built in React for tracking movies you've watched.
 
 - **Functional Components**: The app is built using functional components.
 - **React Hooks**: Implements `useState`, `useEffect`, and `useCallback` for state management and side effects and also custom hooks.
+- **OMDB API**
